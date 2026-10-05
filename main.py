@@ -1,16 +1,35 @@
-Product# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from src.category import Category
+from src.product import Product
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def main() -> None:
+    product1 = Product(
+        name="iPhone 15",
+        description="Смартфон Apple",
+        price=100000.0,
+        quantity=5,
+    )
+
+    product2 = Product(
+        name="MacBook Air",
+        description="Ноутбук Apple",
+        price=150000.0,
+        quantity=3,
+    )
+
+    category = Category(
+        name="Техника",
+        description="Электроника и гаджеты",
+        products=[product1, product2],
+    )
+
+    print(category.name)
+    print(category.description)
+    print(category.products)
+    print(Category.category_count)
+    print(Category.product_count)
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if __name__ == "__main__":
+    main()
+    
