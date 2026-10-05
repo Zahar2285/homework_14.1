@@ -73,4 +73,3 @@ def test_product_count() -> None:
     )
 
     assert Category.product_count == 2
-
