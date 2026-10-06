@@ -1,0 +1,32 @@
+class Product:
+    def __init__(
+        self,
+        name: str,
+        description: str,
+        price: float,
+        quantity: int,
+    ) -> None:
+        self.name = name
+        self.description = description
+        self.__price = price
+        self.quantity = quantity
+
+    @classmethod
+    def new_product(cls, product_data: dict) -> "Product":
+        return cls(
+            name=product_data["name"],
+            description=product_data["description"],
+            price=product_data["price"],
+            quantity=product_data["quantity"],
+        )
+
+    @property
+    def price(self) -> float:
+        return self.__price
+
+    @price.setter
+    def price(self, value: float) -> None:
+        if value > 0:
+            self.__price = value
+        else:
+            print("Цена не должна быть нулевая или отрицательная")
