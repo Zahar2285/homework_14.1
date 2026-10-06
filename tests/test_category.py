@@ -74,3 +74,21 @@ def test_product_count() -> None:
 
     assert Category.product_count == 2
 
+def test_add_product() -> None:
+    product = Product(
+        name="iPhone 15",
+        description="Смартфон Apple",
+        price=100000.0,
+        quantity=5,
+    )
+
+    category = Category(
+        name="Смартфоны",
+        description="Мобильные телефоны",
+        products=[],
+    )
+
+    category.add_product(product)
+
+    assert category.products == "iPhone 15, 100000.0 руб. Остаток: 5 шт.\n"
+    assert Category.product_count == 1
