@@ -74,6 +74,7 @@ def test_product_count() -> None:
 
     assert Category.product_count == 2
 
+
 def test_add_product() -> None:
     product = Product(
         name="iPhone 15",

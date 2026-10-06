@@ -14,6 +14,7 @@ def test_product_initialization() -> None:
     assert product.price == 100000.0
     assert product.quantity == 5
 
+
 def test_new_product() -> None:
     product_data = {
         "name": "iPhone 15",
@@ -29,6 +30,7 @@ def test_new_product() -> None:
     assert product.description == "Смартфон Apple"
     assert product.price == 100000.0
     assert product.quantity == 5
+
 
 def test_product_price_setter() -> None:
     product = Product(
