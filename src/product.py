@@ -8,7 +8,7 @@ class Product:
     ) -> None:
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price
         self.quantity = quantity
 
     @classmethod
@@ -19,3 +19,14 @@ class Product:
             price=product_data["price"],
             quantity=product_data["quantity"],
         )
+
+    @property
+    def price(self) -> float:
+        return self.__price
+
+    @price.setter
+    def price(self, value: float) -> None:
+        if value > 0:
+            self.__price = value
+        else:
+            print("Цена не должна быть нулевая или отрицательная")
