@@ -11,6 +11,12 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    def __str__(self) -> str:
+        return (
+            f"{self.name}, {self.price} руб. "
+            f"Остаток: {self.quantity} шт."
+        )
+
     @classmethod
     def new_product(cls, product_data: dict) -> "Product":
         return cls(
@@ -30,3 +36,9 @@ class Product:
             self.__price = value
         else:
             print("Цена не должна быть нулевая или отрицательная")
+
+    def __add__(self, other: "Product") -> float:
+        return (
+            self.price * self.quantity
+            + other.price * other.quantity
+        )
