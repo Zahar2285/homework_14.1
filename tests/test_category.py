@@ -93,3 +93,33 @@ def test_add_product() -> None:
 
     assert category.products == "iPhone 15, 100000.0 руб. Остаток: 5 шт.\n"
     assert Category.product_count == 1
+
+def test_category_str() -> None:
+    product1 = Product(
+        name="Samsung Galaxy S23 Ultra",
+        description="256GB, Серый цвет, 200MP камера",
+        price=180000.0,
+        quantity=5,
+    )
+    product2 = Product(
+        name="Iphone 15",
+        description="512GB, Gray space",
+        price=210000.0,
+        quantity=8,
+    )
+    product3 = Product(
+        name="Xiaomi Redmi Note 11",
+        description="1024GB, Синий",
+        price=31000.0,
+        quantity=14,
+    )
+
+    category = Category(
+        name="Смартфоны",
+        description="Смартфоны и гаджеты",
+        products=[product1, product2, product3],
+    )
+
+    assert str(category) == (
+        "Смартфоны, количество продуктов: 27 шт."
+    )
