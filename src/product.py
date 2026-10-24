@@ -11,6 +11,12 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    def __str__(self) -> str:
+        return (
+            f"{self.name}, {self.price} руб. "
+            f"Остаток: {self.quantity} шт."
+        )
+
     @classmethod
     def new_product(cls, product_data: dict) -> "Product":
         return cls(
