@@ -36,3 +36,9 @@ class Product:
             self.__price = value
         else:
             print("Цена не должна быть нулевая или отрицательная")
+
+    def __add__(self, other: "Product") -> float:
+        return (
+            self.price * self.quantity
+            + other.price * other.quantity
+        )
