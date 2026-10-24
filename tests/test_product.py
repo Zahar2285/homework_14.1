@@ -72,3 +72,19 @@ def test_product_str() -> None:
     assert str(product) == (
         "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
     )
+
+def test_product_add() -> None:
+    product1 = Product(
+        name="Товар A",
+        description="Первый товар",
+        price=100.0,
+        quantity=10,
+    )
+    product2 = Product(
+        name="Товар B",
+        description="Второй товар",
+        price=200.0,
+        quantity=2,
+    )
+
+    assert product1 + product2 == 1400.0
