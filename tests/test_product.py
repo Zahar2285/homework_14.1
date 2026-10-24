@@ -61,6 +61,7 @@ def test_product_price_setter_invalid() -> None:
 
     assert product.price == 100000.0
 
+
 def test_product_str() -> None:
     product = Product(
         name="Samsung Galaxy S23 Ultra",
@@ -72,6 +73,7 @@ def test_product_str() -> None:
     assert str(product) == (
         "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
     )
+
 
 def test_product_add() -> None:
     product1 = Product(

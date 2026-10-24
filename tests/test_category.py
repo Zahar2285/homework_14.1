@@ -94,6 +94,7 @@ def test_add_product() -> None:
     assert category.products == "iPhone 15, 100000.0 руб. Остаток: 5 шт.\n"
     assert Category.product_count == 1
 
+
 def test_category_str() -> None:
     product1 = Product(
         name="Samsung Galaxy S23 Ultra",
