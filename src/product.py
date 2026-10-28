@@ -46,6 +46,7 @@ class Product:
             + other.price * other.quantity
         )
 
+
 class Smartphone(Product):
     def __init__(
         self,
@@ -63,6 +64,7 @@ class Smartphone(Product):
         self.model = model
         self.memory = memory
         self.color = color
+
 
 class LawnGrass(Product):
     def __init__(
