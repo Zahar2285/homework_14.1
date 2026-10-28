@@ -38,6 +38,9 @@ class Product:
             print("Цена не должна быть нулевая или отрицательная")
 
     def __add__(self, other: "Product") -> float:
+        if type(self) is not type(other):
+            raise TypeError("Нельзя складывать товары разных классов")
+
         return (
             self.price * self.quantity
             + other.price * other.quantity
@@ -76,4 +79,3 @@ class LawnGrass(Product):
         self.country = country
         self.germination_period = germination_period
         self.color = color
-        
