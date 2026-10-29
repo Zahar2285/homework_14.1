@@ -1,7 +1,7 @@
 import pytest
 
 from src.category import Category
-from src.product import Product
+from src.product import LawnGrass, Product, Smartphone
 
 
 @pytest.fixture(autouse=True)
@@ -124,3 +124,49 @@ def test_category_str() -> None:
     assert str(category) == (
         "Смартфоны, количество продуктов: 27 шт."
     )
+
+
+def test_add_product_rejects_non_product() -> None:
+    category = Category(
+        name="Техника",
+        description="Электроника",
+        products=[],
+    )
+
+    with pytest.raises(TypeError):
+        category.add_product("Это не товар")
+
+
+def test_add_product_subclasses() -> None:
+    smartphone = Smartphone(
+        "Samsung Galaxy",
+        "Смартфон",
+        180000.0,
+        5,
+        95.5,
+        "S23 Ultra",
+        256,
+        "Серый",
+    )
+
+    grass = LawnGrass(
+        "Газонная трава",
+        "Трава для газона",
+        1000.0,
+        10,
+        "Россия",
+        "14 дней",
+        "Зелёный",
+    )
+
+    category = Category(
+        name="Товары",
+        description="Разные товары",
+        products=[],
+    )
+
+    category.add_product(smartphone)
+    category.add_product(grass)
+
+    assert "Samsung Galaxy, 180000.0 руб. Остаток: 5 шт.\n" in category.products
+    assert "Газонная трава, 1000.0 руб. Остаток: 10 шт.\n" in category.products

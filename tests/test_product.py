@@ -1,4 +1,6 @@
-from src.product import Product
+import pytest
+
+from src.product import LawnGrass, Product, Smartphone
 
 
 def test_product_initialization() -> None:
@@ -90,3 +92,64 @@ def test_product_add() -> None:
     )
 
     assert product1 + product2 == 1400.0
+
+
+def test_smartphone_inherits_product() -> None:
+    smartphone = Smartphone(
+        "Samsung Galaxy",
+        "Смартфон",
+        180000.0,
+        5,
+        95.5,
+        "S23 Ultra",
+        256,
+        "Серый",
+    )
+
+    assert isinstance(smartphone, Product)
+    assert smartphone.efficiency == 95.5
+    assert smartphone.model == "S23 Ultra"
+    assert smartphone.memory == 256
+    assert smartphone.color == "Серый"
+
+
+def test_lawn_grass_inherits_product() -> None:
+    grass = LawnGrass(
+        "Газонная трава",
+        "Трава для газона",
+        1000.0,
+        10,
+        "Россия",
+        "14 дней",
+        "Зелёный",
+    )
+
+    assert isinstance(grass, Product)
+    assert grass.country == "Россия"
+    assert grass.germination_period == "14 дней"
+    assert grass.color == "Зелёный"
+
+
+def test_add_different_product_types() -> None:
+    smartphone = Smartphone(
+        "Samsung Galaxy",
+        "Смартфон",
+        180000.0,
+        5,
+        95.5,
+        "S23 Ultra",
+        256,
+        "Серый",
+    )
+    grass = LawnGrass(
+        "Газонная трава",
+        "Трава для газона",
+        1000.0,
+        10,
+        "Россия",
+        "14 дней",
+        "Зелёный",
+    )
+
+    with pytest.raises(TypeError):
+        smartphone + grass
