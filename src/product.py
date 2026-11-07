@@ -1,3 +1,27 @@
+from abc import ABC, abstractmethod
+
+
+class PrintMixin:
+    def __init__(self, *args, **kwargs):
+        print(f"{self.__class__.__name__}{args}")
+        super().__init__(*args, **kwargs)
+
+
+class BaseProduct(ABC):
+    @abstractmethod
+    def __init__(
+        self,
+        name: str,
+        description: str,
+        price: float,
+        quantity: int,
+    ) -> None:
+        self.name = name
+        self.description = description
+        self._BaseProduct__price = price
+        self.quantity = quantity
+
+
 class Product:
     def __init__(
         self,
