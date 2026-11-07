@@ -7,9 +7,9 @@ class Category:
 
     def __init__(
         self,
-        name: str,
-        description: str,
-        products: list[Product],
+            name: str,
+            description: str,
+            products: list[Product],
     ) -> None:
         self.name = name
         self.description = description

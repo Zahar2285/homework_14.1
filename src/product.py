@@ -1,15 +1,38 @@
-class Product:
+from abc import ABC, abstractmethod
+
+
+class PrintMixin:
+    def __init__(self, *args, **kwargs):
+        print(f"{self.__class__.__name__}{args}")
+        super().__init__(*args, **kwargs)
+
+
+class BaseProduct(ABC):
+    @abstractmethod
     def __init__(
-        self,
-        name: str,
-        description: str,
-        price: float,
-        quantity: int,
+            self,
+            name: str,
+            description: str,
+            price: float,
+            quantity: int,
+            *args,
     ) -> None:
         self.name = name
         self.description = description
-        self.__price = price
+        self._Product__price = price
         self.quantity = quantity
+
+
+class Product(PrintMixin, BaseProduct):
+    def __init__(
+            self,
+            name: str,
+            description: str,
+            price: float,
+            quantity: int,
+            *args,
+    ) -> None:
+        super().__init__(name, description, price, quantity, *args)
 
     def __str__(self) -> str:
         return (
@@ -59,7 +82,16 @@ class Smartphone(Product):
         memory: int,
         color: str,
     ) -> None:
-        super().__init__(name, description, price, quantity)
+        super().__init__(
+            name,
+            description,
+            price,
+            quantity,
+            efficiency,
+            model,
+            memory,
+            color,
+        )
         self.efficiency = efficiency
         self.model = model
         self.memory = memory
@@ -77,7 +109,15 @@ class LawnGrass(Product):
         germination_period: str,
         color: str,
     ) -> None:
-        super().__init__(name, description, price, quantity)
+        super().__init__(
+            name,
+            description,
+            price,
+            quantity,
+            country,
+            germination_period,
+            color,
+        )
         self.country = country
         self.germination_period = germination_period
         self.color = color
