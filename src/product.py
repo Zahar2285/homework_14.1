@@ -10,30 +10,29 @@ class PrintMixin:
 class BaseProduct(ABC):
     @abstractmethod
     def __init__(
-        self,
-        name: str,
-        description: str,
-        price: float,
-        quantity: int,
+            self,
+            name: str,
+            description: str,
+            price: float,
+            quantity: int,
+            *args,
     ) -> None:
         self.name = name
         self.description = description
-        self._BaseProduct__price = price
+        self._Product__price = price
         self.quantity = quantity
 
 
-class Product:
+class Product(PrintMixin, BaseProduct):
     def __init__(
-        self,
-        name: str,
-        description: str,
-        price: float,
-        quantity: int,
+            self,
+            name: str,
+            description: str,
+            price: float,
+            quantity: int,
+            *args,
     ) -> None:
-        self.name = name
-        self.description = description
-        self.__price = price
-        self.quantity = quantity
+        super().__init__(name, description, price, quantity, *args)
 
     def __str__(self) -> str:
         return (
