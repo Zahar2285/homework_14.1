@@ -39,6 +39,12 @@ class Product(PrintMixin, BaseProduct):
 
         super().__init__(name, description, price, quantity, *args)
 
+    def __str__(self) -> str:
+        return (
+            f"{self.name}, {self.price} руб. "
+            f"Остаток: {self.quantity} шт."
+        )
+
     @classmethod
     def new_product(cls, product_data: dict) -> "Product":
         return cls(
