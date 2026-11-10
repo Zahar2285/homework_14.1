@@ -32,6 +32,11 @@ class Product(PrintMixin, BaseProduct):
             quantity: int,
             *args,
     ) -> None:
+        if quantity == 0:
+            raise ValueError(
+                "Товар с нулевым количеством не может быть добавлен"
+            )
+
         super().__init__(name, description, price, quantity, *args)
 
     def __str__(self) -> str:

@@ -170,3 +170,18 @@ def test_add_product_subclasses() -> None:
 
     assert "Samsung Galaxy, 180000.0 руб. Остаток: 5 шт.\n" in category.products
     assert "Газонная трава, 1000.0 руб. Остаток: 10 шт.\n" in category.products
+
+
+def test_middle_price() -> None:
+    product1 = Product("Товар 1", "Описание 1", 100, 5)
+    product2 = Product("Товар 2", "Описание 2", 200, 10)
+
+    category = Category("Категория", "Описание", [product1, product2])
+
+    assert category.middle_price() == 150
+
+
+def test_average_price_empty_category() -> None:
+    category = Category("Пустая категория", "Описание", [])
+
+    assert category.middle_price() == 0
