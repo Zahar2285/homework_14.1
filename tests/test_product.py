@@ -154,6 +154,7 @@ def test_add_different_product_types() -> None:
     with pytest.raises(TypeError):
         smartphone + grass
 
+
 def test_product_zero_quantity() -> None:
     with pytest.raises(
         ValueError,
